@@ -43,8 +43,8 @@
 准备 Node.js 24+、Corepack 和本机编译工具；苹果电脑需要 Xcode 命令行工具。[环境准备说明](docs/development.zh.md#前置条件)。仓库固定使用 pnpm 11.7.0。
 
 ```sh
-git clone https://github.com/chulj/lj-Lab.git
-cd lj-Lab
+git clone https://github.com/liujing000/AI-work.git
+cd AI-work
 corepack enable
 corepack pnpm install --frozen-lockfile
 corepack pnpm run build
@@ -94,7 +94,7 @@ DSH_DESKTOP_OPEN_DEVTOOLS=0 corepack pnpm run start:desktop
 
 ![架构和来源：桌面外壳、工作台界面、现有助手、产品技能](docs/assets/readme/08-development.png)
 
-[平台基础](https://github.com/deepseek-ai/deepseek-harness) · [图标来源](https://github.com/tailwindlabs/heroicons) · [开源许可](LICENSE) · [第三方许可](THIRD_PARTY_NOTICES.md) · [执行安全说明](SAFETY.zh.md) · [反馈问题](https://github.com/chulj/lj-Lab/issues)
+[平台基础](https://github.com/deepseek-ai/deepseek-harness) · [图标来源](https://github.com/tailwindlabs/heroicons) · [开源许可](LICENSE) · [第三方许可](THIRD_PARTY_NOTICES.md) · [执行安全说明](SAFETY.zh.md) · [反馈问题](https://github.com/liujing000/AI-work/issues)
 
 <details>
 <summary>开发入口</summary>
