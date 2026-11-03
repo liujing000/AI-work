@@ -1,0 +1,3 @@
+- insert:
+    - id: lj-confirmation-fixture
+      name: './confirmation-fixture.ts'

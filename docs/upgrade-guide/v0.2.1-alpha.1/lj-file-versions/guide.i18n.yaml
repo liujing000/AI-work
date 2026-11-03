@@ -1,0 +1,16 @@
+# Bilingual-pair consistency record for guide.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/upgrade-guide/v0.2.1-alpha.1/lj-file-versions/guide.md
+/:
+  en: 3a45e616540ebf2a
+  zh: 786c7aa1b0a24943
+/lj-document-versions:
+  en: 9d67894aba46fa62
+  zh: 488a6e4f3c798805
+/lj-document-versions/change:
+  en: c41406580e8963e4
+  zh: e93b2ee941c3421d
+/lj-document-versions/migration:
+  en: 922ae62098028a68
+  zh: 8ffdb81729cecab8

@@ -1,0 +1,11 @@
+version: 1
+scenario: lj-project-save
+profile: headless
+composition: lj
+recording: authored
+header:
+  class: lj
+  pin: true
+  toolSchemasSource: text-turn
+workspace:
+  final: true

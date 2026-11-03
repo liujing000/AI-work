@@ -1,0 +1,16 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write prototypes/lj-v2/README.md
+/lj-interactive-prototype:
+  en: e2ff1e8ef83df70d
+  zh: 7172b0a5b1fd2366
+/lj-interactive-prototype/summary:
+  en: 5c55c7153cd11963
+  zh: 09d337ffbd50a283
+/lj-interactive-prototype/open-and-explore:
+  en: 7d525ce044cad870
+  zh: 5f9b69cbd83ee526
+/lj-interactive-prototype/keyboard-and-windows:
+  en: b87f67c12e7e5009
+  zh: efc8e29eff8fc1cc
