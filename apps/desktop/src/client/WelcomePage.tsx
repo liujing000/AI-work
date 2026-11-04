@@ -10,11 +10,13 @@ type Page = 'entry' | 'key' | 'account'
 
 /**
  * Welcome headline. Local clock: before noon is morning, noon onward is afternoon.
+ * @param language - locale identifier used to select the greeting language.
  * @param now - clock to read; defaults to the current local time.
- * @returns 「上午好，lj」 or 「下午好，lj」.
+ * @returns A localized morning or afternoon greeting for lj.
  */
-function aipmGreeting(now = new Date()): string {
-  return now.getHours() < 12 ? '上午好，lj' : '下午好，lj'
+function aipmGreeting(language: string, now = new Date()): string {
+  if (language.startsWith('zh')) return now.getHours() < 12 ? '上午好，lj' : '下午好，lj'
+  return now.getHours() < 12 ? 'Good morning, lj' : 'Good afternoon, lj'
 }
 
 /**
@@ -186,7 +188,7 @@ export function Welcome({ api }: { api: WelcomeApi }) {
     <main className="welcome" aria-labelledby={heading}>
       <img className="brand" src="assets/welcome-brand.svg" alt={m.welcomeBrand} width="472" height="40" />
       <div id="tagline" className="tagline" hidden={page !== 'entry'}>
-        <h1 id="welcome-heading">{aipmGreeting()}</h1>
+        <h1 id="welcome-heading">{aipmGreeting(api.id)}</h1>
         <p id="welcome-description" hidden>{m.welcomeDescription}</p>
       </div>
       <form id="key-form" className="key-form" hidden={page !== 'key'} noValidate onSubmit={(event) => { void saveKey(event) }} aria-busy={busy}>

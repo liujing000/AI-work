@@ -150,7 +150,7 @@ function mobileNavigation() {
 }
 function appRail() {
   const active = route.page === 'project' || route.page === 'first-use' ? 'home' : route.page;
-  return `<nav class="app-rail" aria-label="应用导航"><a class="rail-brand orb" href="#home" aria-label="lj 工作台">${icon('star')}</a><div class="rail-links">${globalNavs.map(([page,ico,label]) => `<button class="rail-button ${active===page?'active':''}" aria-label="${label}" title="${label}" ${active===page?'aria-current="page"':''} data-action="nav" data-route="#${page}">${icon(ico)}</button>`).join('')}</div><div class="rail-bottom"><button class="rail-button ${active==='settings'?'active':''}" aria-label="打开设置" title="设置" data-action="nav" data-route="#settings">${icon('settings')}</button><div class="rail-avatar" title="lj的个人工作空间">S</div></div></nav>`;
+  return `<nav class="app-rail" aria-label="应用导航"><a class="rail-brand orb" href="#home" aria-label="lj 工作台">${icon('star')}</a><div class="rail-links">${globalNavs.map(([page,ico,label]) => `<button class="rail-button ${active===page?'active':''}" aria-label="${label}" title="${label}" ${active===page?'aria-current="page"':''} data-action="nav" data-route="#${page}">${icon(ico)}</button>`).join('')}</div><div class="rail-bottom"><button class="rail-button ${active==='settings'?'active':''}" aria-label="打开设置" title="设置" data-action="nav" data-route="#settings">${icon('settings')}</button><div class="rail-avatar" title="lj的个人工作空间">lj</div></div></nav>`;
 }
 function sidebarBrand() {
   return `<div class="sidebar-heading"><a class="brand" href="#home">lj<span>个人工作台</span></a><button class="icon-btn mobile-close" aria-label="收起导航" data-action="mobile-menu">${icon('close')}</button></div>`;

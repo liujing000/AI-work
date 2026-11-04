@@ -60,7 +60,7 @@
 /* Personal mark sits in the same primary ink as the greeting. */
 .fish {
   display: block;
-  border-radius: 10px;
+  border-radius: var(--dsw-radius-md);
 }
 
 /* Workspace row sits 12px above the input card (figma y80 → y112). */

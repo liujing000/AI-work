@@ -1,7 +1,7 @@
 /** Workbench-owned Chinese dictionary. */
 export const ljZh = {
   stage: '本阶段', stageUnset: '尚未接入', stageHint: '流程尚未接入。阶段名称会在 Skill 接入后出现。', evidenceGaps: '待补充证据', noGaps: '暂无缺口', stageBusy: '正在写入…', stageConfirm: '确认本阶段', stageBlocked: '证据补齐后才能确认，并进入下一阶段。', stageSaved: '本阶段已确认。', productLabel: '产品',
-  'brand.localBuild': 'lj Lab', brand: 'lj Lab', avatar: 'S', personal: '个人工作台', home: '工作台', documents: '全部文档', templates: '模板', trash: '回收站', settings: '设置',
+  'brand.localBuild': 'lj Lab', brand: 'lj Lab', avatar: 'lj', personal: '个人工作台', home: '工作台', documents: '全部文档', templates: '模板', trash: '回收站', settings: '设置',
   morning: '上午好，lj', afternoon: '下午好，lj', welcome: '每一个好想法，都从一个具体问题开始', foot: '先一起聊清楚，再把确定的结论留下来。',
   projects: '我的项目', recent: '最近文档', space: 'lj的工作空间', oneLine: '一个项目，一条主线', create: '新建项目', search: '搜索内容', fromTemplate: '从模板开始',
   projectName: '项目名称', namePlaceholder: '给这个想法起个名字', idea: '最初的想法（可选）', ideaPlaceholder: '简单说说你想解决什么问题…', createHint: '创建一个空文件夹，从讨论开始，不预置文档或阶段',
@@ -27,7 +27,7 @@ export type LjKey = keyof typeof ljZh
 /** English workbench dictionary. */
 export const ljEn: Record<LjKey, string> = {
   stage: 'Current stage', stageUnset: 'Not connected', stageHint: 'Stage names appear after Skills are connected.', evidenceGaps: 'Missing evidence', noGaps: 'No gaps', stageBusy: 'Saving…', stageConfirm: 'Confirm stage', stageBlocked: 'Fill evidence gaps before confirming the next stage.', stageSaved: 'Stage confirmed.', productLabel: 'Product',
-  'brand.localBuild': 'lj Lab', brand: 'lj Lab', avatar: 'S', personal: 'Personal workbench', home: 'Workbench', documents: 'All documents', templates: 'Templates', trash: 'Trash', settings: 'Settings',
+  'brand.localBuild': 'lj Lab', brand: 'lj Lab', avatar: 'lj', personal: 'Personal workbench', home: 'Workbench', documents: 'All documents', templates: 'Templates', trash: 'Trash', settings: 'Settings',
   morning: 'Good morning, lj', afternoon: 'Good afternoon, lj', welcome: 'Every idea starts with a specific problem', foot: 'Talk it through, then keep the conclusions you confirm.',
   projects: 'My projects', recent: 'Recent documents', space: 'lj’s workspace', oneLine: 'One project, one thread', create: 'New project', search: 'Search', fromTemplate: 'Start from a template',
   projectName: 'Project name', namePlaceholder: 'Name this idea', idea: 'Initial idea (optional)', ideaPlaceholder: 'What problem would you like to solve?', createHint: 'Start with an empty folder and a conversation',
