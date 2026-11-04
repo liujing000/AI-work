@@ -186,7 +186,10 @@ export function Welcome({ api }: { api: WelcomeApi }) {
     {expiryNotice && <Toast text={m.welcomeSessionExpired} onDone={() => { setExpiryNotice(false) }} />}
     <div className="titlebar" aria-hidden="true" />
     <main className="welcome" aria-labelledby={heading}>
-      <img className="brand" src="assets/welcome-brand.svg" alt={m.welcomeBrand} width="472" height="40" />
+      <div className="brand">
+        <img src="assets/welcome-icon.png" alt={m.welcomeBrand} width="32" height="32" />
+        <span aria-hidden="true">AIPM</span>
+      </div>
       <div id="tagline" className="tagline" hidden={page !== 'entry'}>
         <h1 id="welcome-heading">{aipmGreeting(api.id)}</h1>
         <p id="welcome-description" hidden>{m.welcomeDescription}</p>

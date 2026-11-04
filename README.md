@@ -37,6 +37,12 @@
 
 ![启动地图：本机应用可双击，源码使用需要准备环境、安装、构建和配置模型](docs/assets/readme/05-start.png)
 
+### 下载 macOS 安装包
+
+[下载 lj Lab 0.2.1-alpha.1（Apple 芯片，`.dmg`）](https://github.com/liujing000/AI-work/releases/download/v0.2.1-alpha.1/lj-Lab-0.2.1-alpha.1-arm64.dmg)
+
+该测试版使用本地 ad-hoc 签名，未经过 Apple 公证，仅支持 Apple 芯片 Mac。首次打开时如果 macOS 阻止运行，请在“系统设置 → 隐私与安全性”中确认打开。
+
 <details>
 <summary>第一次从源码使用：复制启动命令</summary>
 
