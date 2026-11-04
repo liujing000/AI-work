@@ -494,6 +494,6 @@ node apps/desktop/node_modules/pnpm/bin/pnpm.mjs --dir apps/desktop run test:upd
 
 个人 lj Lab macOS 应用使用由 `resources/lj-avatar.png` 生成的 `resources/lj.icns` 作为访达和 Dock 图标。开发启动器将图标摘要纳入应用缓存标识，本地个人打包脚本复制同一 ICNS 资源。
 
-本机个人打包命令为 `node apps/desktop/scripts/package-lj-local.mjs`，运行前先完成相关 TypeScript 和包级 bundle。脚本将 Electron、应用模块、依赖运行时及办公资源组装为 `dist/lj Lab.app`，并应用 ad-hoc 签名；沿用此工作区的开发数据目录和项目文件。本机 Mac 构建不属于已公证的公开分发版本。
+本机个人打包命令为 `node apps/desktop/scripts/package-lj-local.mjs`，运行前先完成相关 TypeScript 和包级 bundle。脚本将 Electron、应用模块、依赖运行时及办公资源组装为 `dist/lj Lab.app`，并应用 ad-hoc 签名；默认沿用此工作区的开发数据目录和项目文件。传入 `--portable` 后，应用数据改为保存在已安装应用的 macOS 用户数据目录。本机 Mac 构建不属于已公证的公开分发版本。
 
 访达直接启动应用包内签名的 Electron 可执行文件。应用入口在启动前恢复本机数据路径；项目位于桌面，因此 macOS 可能询问桌面文件夹访问权限。

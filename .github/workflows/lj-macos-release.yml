@@ -1,0 +1,46 @@
+name: lj macOS Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub Release tag
+        required: true
+        default: v0.2.1-alpha.1
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+      - name: Build host packages
+        run: corepack pnpm run build:lib:host
+      - name: Prepare desktop runtime
+        run: corepack pnpm --dir apps/desktop run prepare:runtime
+      - name: Assemble portable application
+        run: env -u ELECTRON_RUN_AS_NODE node apps/desktop/scripts/package-lj-local.mjs --portable
+      - name: Build and verify DMG
+        run: |
+          set -eu
+          stage="$(mktemp -d)"
+          ditto 'dist/lj Lab.app' "$stage/lj Lab.app"
+          ln -s /Applications "$stage/Applications"
+          mkdir -p dist/releases
+          hdiutil create -volname 'lj Lab 0.2.1-alpha.1' -srcfolder "$stage" -ov -format UDZO 'dist/releases/lj-Lab-0.2.1-alpha.1-arm64.dmg'
+          hdiutil verify 'dist/releases/lj-Lab-0.2.1-alpha.1-arm64.dmg'
+          shasum -a 256 'dist/releases/lj-Lab-0.2.1-alpha.1-arm64.dmg'
+      - name: Upload Release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload '${{ inputs.tag }}' 'dist/releases/lj-Lab-0.2.1-alpha.1-arm64.dmg#lj Lab 0.2.1-alpha.1 (Apple Silicon)' --clobber

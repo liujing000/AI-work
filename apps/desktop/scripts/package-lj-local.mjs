@@ -19,6 +19,7 @@ const pnpm = join(pnpmRoot, 'bin/pnpm.mjs')
 const manifest = JSON.parse(readFileSync(join(desktop, 'package.json'), 'utf8'))
 const home = join(desktop, '.desktop-build/development/home')
 const userData = join(desktop, '.desktop-build/development/electron-user-data')
+const portable = process.argv.includes('--portable')
 
 /** Copy package files and reproduce version-specific resolution without external links. */
 function materializePackages(inputs, destination, extra = []) {
@@ -135,7 +136,9 @@ mkdirSync(join(resources, 'runtime/cli/bin'), { recursive: true })
 cpSync(join(desktop, 'cli/dsh'), join(resources, 'runtime/cli/bin/dsh'))
 cpSync(join(desktop, 'lib/command-manager-entry.js'), join(resources, 'runtime/cli/command-manager.js'))
 writeFileSync(join(resources, 'runtime/versions.json'), JSON.stringify({ schemaVersion: 1, node: release.nodeVersion, pnpm: release.pnpmVersion }))
-writeFileSync(join(app, 'lj-main.mjs'), `import { app } from 'electron'\nprocess.env.DSH_HOME = ${JSON.stringify(home)}\nprocess.env.DSH_DESKTOP_OPEN_DEVTOOLS = '0'\napp.setPath('userData', ${JSON.stringify(userData)})\nawait import('./lib/main.js')\n`)
+writeFileSync(join(app, 'lj-main.mjs'), portable
+  ? `import { app } from 'electron'\nimport { join } from 'node:path'\nprocess.env.DSH_HOME = join(app.getPath('userData'), 'home')\nprocess.env.DSH_DESKTOP_OPEN_DEVTOOLS = '0'\nawait import('./lib/main.js')\n`
+  : `import { app } from 'electron'\nprocess.env.DSH_HOME = ${JSON.stringify(home)}\nprocess.env.DSH_DESKTOP_OPEN_DEVTOOLS = '0'\napp.setPath('userData', ${JSON.stringify(userData)})\nawait import('./lib/main.js')\n`)
 writeFileSync(join(app, 'package.json'), JSON.stringify({ ...manifest, main: 'lj-main.mjs', name: 'lj-workbench', productName: 'lj Lab', dshDesktopAppId: 'local.lj.workbench', dependencies: manifest.dependencies }))
 renameSync(join(bundle, 'Contents/MacOS/Electron'), join(bundle, 'Contents/MacOS/lj'))
 const plist = join(bundle, 'Contents/Info.plist')
@@ -146,5 +149,5 @@ const icon = join(desktop, 'resources/lj.icns')
 if (existsSync(icon)) { cpSync(icon, join(resources, 'lj.icns')); execFileSync('/usr/bin/plutil', ['-replace', 'CFBundleIconFile', '-string', 'lj.icns', plist]) }
 execFileSync('/usr/bin/codesign', ['--force', '--deep', '--sign', '-', bundle], { stdio: 'inherit' })
 execFileSync('/usr/bin/codesign', ['--verify', '--deep', '--strict', bundle], { stdio: 'inherit' })
-execFileSync('/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister', ['-f', bundle])
+if (!portable) execFileSync('/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister', ['-f', bundle])
 console.log(`lj personal Mac application: ${bundle}`)

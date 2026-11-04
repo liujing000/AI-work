@@ -492,6 +492,6 @@ Pre-launch CDN and capacity decisions are tracked in the [Desktop update proposa
 
 The personal lj Lab macOS bundle uses `resources/lj.icns`, derived from `resources/lj-avatar.png`, for its Finder and Dock icon. The development launcher includes the icon digest in its bundle cache identity; the local personal packager copies the same ICNS asset.
 
-The local personal packager is `node apps/desktop/scripts/package-lj-local.mjs` after the relevant TypeScript and package bundles have been built. It assembles `dist/lj Lab.app` with Electron, the application modules, dependency runtime, and office resources, then applies an ad-hoc signature. It retains this checkout’s existing development home and project files. This personal Mac build is not a notarized public distribution.
+The local personal packager is `node apps/desktop/scripts/package-lj-local.mjs` after the relevant TypeScript and package bundles have been built. It assembles `dist/lj Lab.app` with Electron, the application modules, dependency runtime, and office resources, then applies an ad-hoc signature. By default it retains this checkout’s existing development home and project files. Pass `--portable` to store application data under the installed app's macOS user-data directory instead. This personal Mac build is not a notarized public distribution.
 
 Finder launches the bundle's signed Electron executable directly. The application entry restores the local data paths before startup; macOS may ask for Desktop-folder access because these projects live on the Desktop.
